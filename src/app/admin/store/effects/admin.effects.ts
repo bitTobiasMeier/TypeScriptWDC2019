@@ -28,8 +28,8 @@ export class AdminEffects {
     map(action => action.contact),
     mergeMap(contact =>
       this.contactStoreService.create(contact).pipe(
-        map(() => CreateContactSuccess({ contact })),
-        tap(() => this.router.navigate(['/contacts', contact.id]))
+        map((newContact) => CreateContactSuccess({ contact: newContact })),
+        tap((result) => this.router.navigate(['/contacts', result.contact.id]))
       )
     )
   );

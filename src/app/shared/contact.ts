@@ -3,3 +3,7 @@ export interface Contact {
   firstname: string;
   lastname: string;
 }
+
+
+export type NewContact = Omit <Contact, 'id'>;
+

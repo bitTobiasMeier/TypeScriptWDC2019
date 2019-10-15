@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable, of } from 'rxjs';
 import { retry, map, catchError } from 'rxjs/operators';
 
-import { Contact } from './contact';
+import { Contact, NewContact } from './contact';
 import { stringify } from '@angular/compiler/src/util';
 
 @Injectable({
@@ -29,10 +29,12 @@ export class ContactStoreService {
     );
   }
 
-  create(contact: Contact): Observable<Contact> {
-    contact.id = this.contacts.length + 1;
-    this.contacts.push(contact);
-    return of (contact);
+  create(contact: NewContact): Observable<Contact> {
+    // Simuliere Backend, wo dann die id generiert wird.
+    const newContact =  contact as Contact;
+    newContact.id = this.contacts.length + 1;
+    this.contacts.push(newContact);
+    return of (newContact);
   }
 
   update(contact: Contact): Observable<Contact> {

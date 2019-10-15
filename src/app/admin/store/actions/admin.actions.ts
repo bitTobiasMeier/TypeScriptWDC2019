@@ -1,5 +1,5 @@
 import { Action, createAction, props, union } from '@ngrx/store';
-import { Contact } from '../../../shared/contact';
+import { Contact, NewContact } from '../../../shared/contact';
 import { logMethod } from 'src/app/shared/log.decorator';
 
 export enum AdminActionTypes {
@@ -11,7 +11,7 @@ export enum AdminActionTypes {
 
 export const CreateContact = createAction(
   '[Admin] Create Contact',
-  props<{contact: Contact}>(),
+  props<{contact: NewContact}>(),
 );
 
 export const CreateContactSuccess = createAction(
