@@ -1,0 +1,15 @@
+<div class="card-header">
+  <h4>
+    <span *ngIf="contact$ | async as contact"
+      >{{ contact.firstname }} {{ contact.lastname }}</span
+    >
+  </h4>
+</div>
+<div class="card-body">
+  <ta-contact-form
+    *ngIf="contact$ | async as contact"
+    (submitContact)="updateContact($event)"
+    [contact]="contact"
+    [editing]="true"
+  ></ta-contact-form>
+</div>

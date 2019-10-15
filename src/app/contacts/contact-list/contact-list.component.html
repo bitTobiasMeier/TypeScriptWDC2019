@@ -1,0 +1,31 @@
+<div class="card-header">
+  <h4>Kontakte</h4>
+  </div>
+  <div class="card-body">
+
+  <ng-container *ngIf="contacts$ | async as contacts">
+    <div class="list-group">
+    <ta-contact-list-item class="card"
+      *ngFor="let contact of contacts"
+      [contact]="contact"
+      [routerLink]="contact.id"></ta-contact-list-item>
+
+    </div>
+
+    <p *ngIf="!contacts.length">
+      Es wurden noch keine Kontakte angelegt.
+    </p>
+
+  </ng-container>
+
+  <ng-container *ngIf="loading$ | async">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">
+        Kontakte werden geladen...
+      </span>
+    </div>
+  </ng-container>
+
+
+
+</div>
